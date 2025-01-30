@@ -14,10 +14,11 @@
 		343BA4A92D4AF29900CD711D /* Exceptions for "Project17 Shared" folder in "Project17 iOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Actions.sks,
 				Assets.xcassets,
+				explosion.sks,
 				GameScene.sks,
 				GameScene.swift,
+				starfield.sks,
 			);
 			target = 343BA4972D4AF29900CD711D /* Project17 iOS */;
 		};
@@ -170,9 +171,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Project17;
 				PRODUCT_NAME = Project17;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -199,9 +204,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Project17;
 				PRODUCT_NAME = Project17;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

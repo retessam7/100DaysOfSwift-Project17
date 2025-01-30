@@ -14,15 +14,18 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let scene = GameScene.newGameScene()
-
         // Present the scene
-        let skView = self.view as! SKView
-        skView.presentScene(scene)
-        
-        skView.ignoresSiblingOrder = true
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+        if let view = self.view as! SKView? {
+            if let scene = SKScene(fileNamed: "GameScene") {
+                scene.scaleMode = .fill
+                
+                view.presentScene(scene)
+            }
+            
+            view.ignoresSiblingOrder = true
+            view.showsFPS = true
+            view.showsNodeCount = true
+        }
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
