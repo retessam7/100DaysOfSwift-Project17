@@ -27,6 +27,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // This is responsible for running code after a period of time has passed, either once or repeatedly
     var gameTimer: Timer?
     
+    var enemyCount = 0
+    var spawnInterval = 1.0
+    var minSpawnInterval = 0.1
+    
     override func didMove(to view: SKView) {
         backgroundColor = .black
         
@@ -57,7 +61,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // five parameters: how many seconds you want the delay to be, what object should be told when the timer fires, what method should be called on that object when the timer fires, any context you want to provide, and whether the time should repeat
         // (The scheduledTimer() timer not only creates a timer, but also starts it immediately.)
-        gameTimer = Timer.scheduledTimer(timeInterval: 0.35, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
+        startGameTimer()
+    }
+    
+    func startGameTimer() {
+        gameTimer?.invalidate()
+        
+        gameTimer = Timer.scheduledTimer(timeInterval: spawnInterval, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -88,6 +98,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         sprite.physicsBody?.linearDamping = 0
         sprite.physicsBody?.angularDamping = 0
         
+        enemyCount += 1
+        
+        if enemyCount == 20 {
+            spawnInterval = max(spawnInterval - 0.1, minSpawnInterval)
+            startGameTimer()
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -112,5 +128,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.removeFromParent()
         
         isGameOver = true
+        gameTimer?.invalidate()
     }
 }
